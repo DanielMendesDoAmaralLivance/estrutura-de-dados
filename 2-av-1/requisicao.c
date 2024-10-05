@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "requisicao.h"
@@ -21,6 +22,7 @@ Requisicao *cria_requisicao(
 
     if (requisicao == NULL)
     {
+        printf("Nao foi possivel alocar memoria para requisicao.");
         exit(1);
     }
 
@@ -37,7 +39,7 @@ char *get_nome(Requisicao *requisicao)
     return requisicao->nome;
 }
 
-char *get_inscricao(Requisicao *requisicao)
+int get_inscricao(Requisicao *requisicao)
 {
     return requisicao->inscricao;
 }
@@ -45,6 +47,11 @@ char *get_inscricao(Requisicao *requisicao)
 char *get_procedimento(Requisicao *requisicao)
 {
     return requisicao->procedimento;
+}
+
+Requisicao *get_proximo_elemento(Requisicao *requisicao)
+{
+    return requisicao->proximo_elemento;
 }
 
 void set_proximo_elemento(Requisicao *requisicao_a_receber_proximo_elemento, Requisicao *proximo_elemento)

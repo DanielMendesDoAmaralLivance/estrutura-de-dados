@@ -29,6 +29,3 @@ int main() {
     }
     return 0;
 }
-
-// requisição -> objetos
-// estrutura -> lista
