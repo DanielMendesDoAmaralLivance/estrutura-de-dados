@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "nodo.h": "c",
+        "node.h": "c",
+        "cliente.h": "c",
+        "lista.h": "c",
+        "estrutura.h": "c",
+        "stdbool.h": "c"
+    }
+}
