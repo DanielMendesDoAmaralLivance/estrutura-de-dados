@@ -39,9 +39,9 @@ População das hashtables com os clientes criados:
     for(i = 0; i < 10; i++) {
         insere_cliente(estrutura, 1, cliente[i]);
         insere_cliente(estrutura, 2, cliente[i]);
-        insere_cliente(estrutura, 3, cliente[i]);
-        insere_cliente(estrutura, 4, cliente[i]);
-        insere_cliente(estrutura, 5, cliente[i]);
+        // insere_cliente(estrutura, 3, cliente[i]);
+        // insere_cliente(estrutura, 4, cliente[i]);
+        // insere_cliente(estrutura, 5, cliente[i]);
     }
     printf("Inseridos na estrutura ...\n");
 /*-------------------------------------------------------------------------------------------------
@@ -113,141 +113,141 @@ Recuperação de clientes usando bairro como chave de busca
 /*-------------------------------------------------------------------------------------------------
 Recuperação de clientes usando quantidade de pessoas como chave de busca
 -------------------------------------------------------------------------------------------------*/
-    lista = recupera_cliente(estrutura, 3, 1, NULL);
-    if(get_quantidade(lista) > 0) {
-        printf("Clientes com 1 pesswoa na residência:\n");
-        Node *cursor = get_inicio(lista);
-        while(cursor != NULL) {
-            imprime(get_data(cursor));
-            cursor = get_next(cursor);
-        }
-    } else {
-        printf("Nenhum cliente recuperado com 1 pessoa na residência!\n");
-    }
-    printf("-------------------------------------------\n\n");
-    lista = recupera_cliente(estrutura, 3, 2, NULL);
-    if(get_quantidade(lista) > 0) {
-        printf("Clientes com 2 pessoas na residência:\n");
-        Node *cursor = get_inicio(lista);
-        while(cursor != NULL) {
-            imprime(get_data(cursor));
-            cursor = get_next(cursor);
-        }
-    } else {
-        printf("Nenhum cliente recuperado com 2 pessoas na residência!\n");
-    }
-    printf("-------------------------------------------\n\n");
-    lista = recupera_cliente(estrutura, 3, 3, NULL);
-    if(get_quantidade(lista) > 0) {
-        printf("Clientes com 3 pessoas na residência:\n");
-        Node *cursor = get_inicio(lista);
-        while(cursor != NULL) {
-            imprime(get_data(cursor));
-            cursor = get_next(cursor);
-        }
-    } else {
-        printf("Nenhum cliente recuperado com 3 pessoas na residência!\n");
-    }
-    printf("-------------------------------------------\n\n");
-    lista = recupera_cliente(estrutura, 3, 4, NULL);
-    if(get_quantidade(lista) > 0) {
-        printf("Clientes com 4 pessoas na residência:\n");
-        Node *cursor = get_inicio(lista);
-        while(cursor != NULL) {
-            imprime(get_data(cursor));
-            cursor = get_next(cursor);
-        }
-    } else {
-        printf("Nenhum cliente recuperado com 4 pessoas na residência!\n");
-    }
-    printf("-------------------------------------------\n\n");
-    lista = recupera_cliente(estrutura, 3, 5, NULL);
-    if(get_quantidade(lista) > 0) {
-        printf("Clientes com 5 ou mais pessoas na redidência:\n");
-        Node *cursor = get_inicio(lista);
-        while(cursor != NULL) {
-            imprime(get_data(cursor));
-            cursor = get_next(cursor);
-        }
-    } else {
-        printf("Nenhum cliente recuperado com 5 ou mais pessoas na residência!\n");
-    }
-    printf("-------------------------------------------\n\n");
+    // lista = recupera_cliente(estrutura, 3, 1, NULL);
+    // if(get_quantidade(lista) > 0) {
+    //     printf("Clientes com 1 pesswoa na residência:\n");
+    //     Node *cursor = get_inicio(lista);
+    //     while(cursor != NULL) {
+    //         imprime(get_data(cursor));
+    //         cursor = get_next(cursor);
+    //     }
+    // } else {
+    //     printf("Nenhum cliente recuperado com 1 pessoa na residência!\n");
+    // }
+    // printf("-------------------------------------------\n\n");
+    // lista = recupera_cliente(estrutura, 3, 2, NULL);
+    // if(get_quantidade(lista) > 0) {
+    //     printf("Clientes com 2 pessoas na residência:\n");
+    //     Node *cursor = get_inicio(lista);
+    //     while(cursor != NULL) {
+    //         imprime(get_data(cursor));
+    //         cursor = get_next(cursor);
+    //     }
+    // } else {
+    //     printf("Nenhum cliente recuperado com 2 pessoas na residência!\n");
+    // }
+    // printf("-------------------------------------------\n\n");
+    // lista = recupera_cliente(estrutura, 3, 3, NULL);
+    // if(get_quantidade(lista) > 0) {
+    //     printf("Clientes com 3 pessoas na residência:\n");
+    //     Node *cursor = get_inicio(lista);
+    //     while(cursor != NULL) {
+    //         imprime(get_data(cursor));
+    //         cursor = get_next(cursor);
+    //     }
+    // } else {
+    //     printf("Nenhum cliente recuperado com 3 pessoas na residência!\n");
+    // }
+    // printf("-------------------------------------------\n\n");
+    // lista = recupera_cliente(estrutura, 3, 4, NULL);
+    // if(get_quantidade(lista) > 0) {
+    //     printf("Clientes com 4 pessoas na residência:\n");
+    //     Node *cursor = get_inicio(lista);
+    //     while(cursor != NULL) {
+    //         imprime(get_data(cursor));
+    //         cursor = get_next(cursor);
+    //     }
+    // } else {
+    //     printf("Nenhum cliente recuperado com 4 pessoas na residência!\n");
+    // }
+    // printf("-------------------------------------------\n\n");
+    // lista = recupera_cliente(estrutura, 3, 5, NULL);
+    // if(get_quantidade(lista) > 0) {
+    //     printf("Clientes com 5 ou mais pessoas na redidência:\n");
+    //     Node *cursor = get_inicio(lista);
+    //     while(cursor != NULL) {
+    //         imprime(get_data(cursor));
+    //         cursor = get_next(cursor);
+    //     }
+    // } else {
+    //     printf("Nenhum cliente recuperado com 5 ou mais pessoas na residência!\n");
+    // }
+    // printf("-------------------------------------------\n\n");
 /*-------------------------------------------------------------------------------------------------
 Recuperação de clientes usando a existência de menores de 5 anos como chave de busca
 -------------------------------------------------------------------------------------------------*/
-    lista = recupera_cliente(estrutura, 4, 0, NULL);
-    if(get_quantidade(lista) > 0) {
-        printf("Clientes que não possuem menores de 5 anos na residência:\n");
-        Node *cursor = get_inicio(lista);
-        while(cursor != NULL) {
-            imprime(get_data(cursor));
-            cursor = get_next(cursor);
-        }
-    } else {
-        printf("Nenhum cliente recuperado com 5 ou mais pessoas na residência!\n");
-    }
-    printf("-------------------------------------------\n\n");
-    lista = recupera_cliente(estrutura, 4, 1, NULL);
-    if(get_quantidade(lista) > 0) {
-        printf("Clientes que possuem menores de 5 anos na residência:\n");
-        Node *cursor = get_inicio(lista);
-        while(cursor != NULL) {
-            imprime(get_data(cursor));
-            cursor = get_next(cursor);
-        }
-    } else {
-        printf("Nenhum cliente recuperado com 5 ou mais pessoas na residência!\n");
-    }
-    printf("-------------------------------------------\n\n");
+    // lista = recupera_cliente(estrutura, 4, 0, NULL);
+    // if(get_quantidade(lista) > 0) {
+    //     printf("Clientes que não possuem menores de 5 anos na residência:\n");
+    //     Node *cursor = get_inicio(lista);
+    //     while(cursor != NULL) {
+    //         imprime(get_data(cursor));
+    //         cursor = get_next(cursor);
+    //     }
+    // } else {
+    //     printf("Nenhum cliente recuperado com 5 ou mais pessoas na residência!\n");
+    // }
+    // printf("-------------------------------------------\n\n");
+    // lista = recupera_cliente(estrutura, 4, 1, NULL);
+    // if(get_quantidade(lista) > 0) {
+    //     printf("Clientes que possuem menores de 5 anos na residência:\n");
+    //     Node *cursor = get_inicio(lista);
+    //     while(cursor != NULL) {
+    //         imprime(get_data(cursor));
+    //         cursor = get_next(cursor);
+    //     }
+    // } else {
+    //     printf("Nenhum cliente recuperado com 5 ou mais pessoas na residência!\n");
+    // }
+    // printf("-------------------------------------------\n\n");
 /*-------------------------------------------------------------------------------------------------
 Recuperação de clientes usando a faixa de renda bruta como chave de busca
 -------------------------------------------------------------------------------------------------*/
-    lista = recupera_cliente(estrutura, 5, 1, NULL);
-    if(get_quantidade(lista) > 0) {
-        printf("Clientes que possuerm renda de até 2000:\n");
-        Node *cursor = get_inicio(lista);
-        while(cursor != NULL) {
-            imprime(get_data(cursor));
-            cursor = get_next(cursor);
-        }
-    } else {
-        printf("Nenhum cliente recuperado com renda de até 2000!\n");
-    }
-    printf("-------------------------------------------\n\n");
-    lista = recupera_cliente(estrutura, 5, 2, NULL);
-    if(get_quantidade(lista) > 0) {
-        printf("Clientes que possuerm renda de até 3000:\n");
-        Node *cursor = get_inicio(lista);
-        while(cursor != NULL) {
-            imprime(get_data(cursor));
-            cursor = get_next(cursor);
-        }
-    } else {
-        printf("Nenhum cliente recuperado com renda de até 3000!\n");
-    }
-    printf("-------------------------------------------\n\n");
-    lista = recupera_cliente(estrutura, 5, 3, NULL);
-    if(get_quantidade(lista) > 0) {
-        printf("Clientes que possuerm renda de até 5000:\n");
-        Node *cursor = get_inicio(lista);
-        while(cursor != NULL) {
-            imprime(get_data(cursor));
-            cursor = get_next(cursor);
-        }
-    } else {
-        printf("Nenhum cliente recuperado com renda de até 5000!\n");
-    }
-    printf("-------------------------------------------\n\n");
-    lista = recupera_cliente(estrutura, 5, 4, NULL);
-    if(get_quantidade(lista) > 0) {
-        printf("Clientes que possuerm renda maior que 5000:\n");
-        Node *cursor = get_inicio(lista);
-        while(cursor != NULL) {
-            imprime(get_data(cursor));
-            cursor = get_next(cursor);
-        }
-    } else {
-        printf("Nenhum cliente recuperado com renda suoerior a 5000!\n");
-    }
+    // lista = recupera_cliente(estrutura, 5, 1, NULL);
+    // if(get_quantidade(lista) > 0) {
+    //     printf("Clientes que possuerm renda de até 2000:\n");
+    //     Node *cursor = get_inicio(lista);
+    //     while(cursor != NULL) {
+    //         imprime(get_data(cursor));
+    //         cursor = get_next(cursor);
+    //     }
+    // } else {
+    //     printf("Nenhum cliente recuperado com renda de até 2000!\n");
+    // }
+    // printf("-------------------------------------------\n\n");
+    // lista = recupera_cliente(estrutura, 5, 2, NULL);
+    // if(get_quantidade(lista) > 0) {
+    //     printf("Clientes que possuerm renda de até 3000:\n");
+    //     Node *cursor = get_inicio(lista);
+    //     while(cursor != NULL) {
+    //         imprime(get_data(cursor));
+    //         cursor = get_next(cursor);
+    //     }
+    // } else {
+    //     printf("Nenhum cliente recuperado com renda de até 3000!\n");
+    // }
+    // printf("-------------------------------------------\n\n");
+    // lista = recupera_cliente(estrutura, 5, 3, NULL);
+    // if(get_quantidade(lista) > 0) {
+    //     printf("Clientes que possuerm renda de até 5000:\n");
+    //     Node *cursor = get_inicio(lista);
+    //     while(cursor != NULL) {
+    //         imprime(get_data(cursor));
+    //         cursor = get_next(cursor);
+    //     }
+    // } else {
+    //     printf("Nenhum cliente recuperado com renda de até 5000!\n");
+    // }
+    // printf("-------------------------------------------\n\n");
+    // lista = recupera_cliente(estrutura, 5, 4, NULL);
+    // if(get_quantidade(lista) > 0) {
+    //     printf("Clientes que possuerm renda maior que 5000:\n");
+    //     Node *cursor = get_inicio(lista);
+    //     while(cursor != NULL) {
+    //         imprime(get_data(cursor));
+    //         cursor = get_next(cursor);
+    //     }
+    // } else {
+    //     printf("Nenhum cliente recuperado com renda suoerior a 5000!\n");
+    // }
 }

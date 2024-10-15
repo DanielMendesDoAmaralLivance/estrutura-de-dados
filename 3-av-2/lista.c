@@ -11,9 +11,9 @@ struct Lista_
     int quantidade;
 };
 
-Lista **cria_lista_de_lista(int quantidade)
+Lista **cria_lista_de_lista(int tamanho)
 {
-    Lista **lista_de_lista = (Lista **)malloc(sizeof(struct Lista_) * quantidade);
+    Lista **lista_de_lista = (Lista **)malloc(sizeof(struct Lista_) * tamanho);
 
     if (lista_de_lista == NULL)
     {
@@ -26,7 +26,7 @@ Lista **cria_lista_de_lista(int quantidade)
 
 Lista *cria_lista()
 {
-    Lista *lista = (Lista *)malloc(sizeof(struct Lista_) * 256);
+    Lista *lista = (Lista *)malloc(sizeof(struct Lista_));
 
     if (lista == NULL)
     {

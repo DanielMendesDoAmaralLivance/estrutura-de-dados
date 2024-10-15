@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h> // VERIFICAR SE ESTA LIB FUNCIONA NO PROGRAMA PRINCIPAL, SE NAO REMOVER TUDO QUE FOR BOOL
+#include <stdbool.h>
 #include <string.h>
 #include "cliente.h"
 
@@ -19,7 +19,7 @@ Cliente *cria_cliente(char *param_nome, char *param_bairro, int param_pessoas, b
 
     if (cliente == NULL)
     {
-        printf("Nao foi possivel alocar memoria para cliente.\n");
+        printf("Nao foi possivel alocar memoria para Cliente.\n");
         exit(1);
     }
 
