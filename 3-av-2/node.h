@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include "cliente.h"
 
 typedef struct Node_ Node;

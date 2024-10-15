@@ -6,8 +6,9 @@
 #include "cliente.h"
 #include "node.h"
 
-#define HASH_TABLE_TAM_INICIAL 11
-#define FATOR_CARGA_MAX 0.75f
+#define HASH_TABLE_TAM_INICIAL 256
+#define CRITERIO_NOME 1
+#define CRITERIO_BAIRRO 2
 
 struct Estrutura_
 {
@@ -40,11 +41,6 @@ void inicializar_hash_table(Lista **hash_table, int tamanho)
     }
 }
 
-float get_fator_carga(int quantidade_na_hash_table, int tamanho_da_hash_table)
-{
-    return (float)quantidade_na_hash_table / tamanho_da_hash_table;
-}
-
 Estrutura *cria_estrutura()
 {
     Estrutura *estrutura = (Estrutura *)malloc(sizeof(struct Estrutura_));
@@ -70,99 +66,20 @@ Estrutura *cria_estrutura()
     return estrutura;
 }
 
-void rehash_clientes(Estrutura *estrutura, Lista **hash_table_antiga, Lista **hash_table_nova, int tamanho_antigo, int tamanho_novo)
-{
-    for (int i = 0; i < tamanho_antigo; i++)
-    {
-        Node *node = get_inicio(hash_table_antiga[i]);
-        while (node)
-        {
-            Cliente *cliente = get_data(node);
-            unsigned int indice = hash_string(get_nome(cliente), tamanho_novo);
-            insere_cliente_na_lista(hash_table_nova[indice], cliente);
-            node = get_next(node);
-        }
-        free(hash_table_antiga[i]);
-    }
-}
-
-void redimensionar(Estrutura *estrutura, int criterio)
-{
-    int tamanho_novo;
-    Lista **hash_table_nova;
-    int tamanho_antigo;
-    Lista **hash_table_antiga;
-
-    if (criterio == 1)
-    {
-        hash_table_antiga = estrutura->clientes_por_nome;
-        tamanho_antigo = estrutura->tamanho_clientes_por_nome;
-    }
-    else if (criterio == 2)
-    {
-        hash_table_antiga = estrutura->clientes_por_bairro;
-        tamanho_antigo = estrutura->tamanho_clientes_por_bairro;
-    }
-
-    tamanho_novo = (tamanho_antigo) * 2;
-    hash_table_nova = cria_lista_de_lista(tamanho_novo);
-    if (hash_table_nova == NULL)
-    {
-        printf("Erro ao redimensionar hash_table\n");
-        exit(1);
-    }
-
-    inicializar_hash_table(hash_table_nova, tamanho_novo);
-    rehash_clientes(estrutura, hash_table_antiga, hash_table_nova, tamanho_antigo, tamanho_novo);
-
-    free(hash_table_antiga);
-
-    if (criterio == 1)
-    {
-        estrutura->clientes_por_nome = hash_table_nova;
-        estrutura->tamanho_clientes_por_nome = tamanho_novo;
-    }
-    else if (criterio == 2)
-    {
-        estrutura->clientes_por_bairro = hash_table_nova;
-        estrutura->tamanho_clientes_por_bairro = tamanho_novo;
-    }
-}
-
 void insere_cliente(Estrutura *estrutura, int criterio, Cliente *cliente)
 {
     unsigned int indice;
-    float fator_de_carga_inicial;
 
     switch (criterio)
     {
-    case 1:
-        fator_de_carga_inicial = get_fator_carga(estrutura->quantidade_clientes_por_nome, estrutura->tamanho_clientes_por_nome);
-
-        if (fator_de_carga_inicial > FATOR_CARGA_MAX)
-        {
-            printf("Fator de carga muito alto (%.2f). Aumentando a capacidade da tabela.\n", fator_de_carga_inicial);
-            redimensionar(estrutura, criterio);
-            printf("Redimensionamento feito com sucesso. Fator de carga atual: %.2f\n", get_fator_carga(estrutura->quantidade_clientes_por_nome, estrutura->tamanho_clientes_por_nome));
-        }
-
+    case CRITERIO_NOME:
         indice = hash_string(get_nome(cliente), estrutura->tamanho_clientes_por_nome);
 
         insere_cliente_na_lista(estrutura->clientes_por_nome[indice], cliente);
 
         estrutura->quantidade_clientes_por_nome++;
-
         break;
-    case 2:
-        fator_de_carga_inicial = get_fator_carga(estrutura->quantidade_clientes_por_bairro, estrutura->tamanho_clientes_por_bairro);
-
-        if (fator_de_carga_inicial > FATOR_CARGA_MAX)
-        {
-            printf("Fator de carga muito alto (%.2f). Aumentando a capacidade da tabela.\n", fator_de_carga_inicial);
-            redimensionar(estrutura, criterio);
-            printf("Redimensionamento feito com sucesso. Fator de carga atual: %.2f\n", get_fator_carga(estrutura->quantidade_clientes_por_bairro, estrutura->tamanho_clientes_por_bairro));
-        }
-
+    case CRITERIO_BAIRRO:
         indice = hash_string(get_bairro(cliente), estrutura->tamanho_clientes_por_bairro);
 
         insere_cliente_na_lista(estrutura->clientes_por_bairro[indice], cliente);
@@ -185,7 +102,7 @@ Lista *recupera_cliente(Estrutura *estrutura, int criterio, int complemento, con
 
     switch (criterio)
     {
-    case 1:
+    case CRITERIO_NOME:
     {
         if (busca == NULL)
             return lista_filtrada;
@@ -204,7 +121,7 @@ Lista *recupera_cliente(Estrutura *estrutura, int criterio, int complemento, con
         }
         break;
     }
-    case 2:
+    case CRITERIO_BAIRRO:
     {
         if (busca == NULL)
             return lista_filtrada;
